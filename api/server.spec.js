@@ -41,7 +41,7 @@ describe('server', function() {
             return request(server).post('/api/auth/login')
                 .then(res => {
                 // check that the status code is 200
-             expect(res.body).toStrictEqual({})
+             expect(res.body).toStrictEqual({"error": "login error"})
             })
         })
 
@@ -50,8 +50,8 @@ describe('server', function() {
             // make a GET request to /
             return request(server).get('/api/jokes')
                 .then(res => {
-                // check that the status code is 200
-                expect(res.status).toBe(200);
+                // check that the status code is 400
+                expect(res.status).toBe(400);
             })
         })
 
