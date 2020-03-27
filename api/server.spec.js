@@ -46,12 +46,12 @@ describe('server', function() {
         })
 
 
-        it('should return 401 OK', function() {
+        it('should return 200 OK', function() {
             // make a GET request to /
             return request(server).get('/api/jokes')
                 .then(res => {
                 // check that the status code is 200
-                expect(res.status).toBe(401);
+                expect(res.status).toBe(200);
             })
         })
 
@@ -60,7 +60,7 @@ describe('server', function() {
             return request(server).get('/api/jokes')
                 .then(res => {
                 // check that the status code is 200
-             expect(res.body).toStrictEqual({"you" : "shall not pass!"})
+             expect(res.body).toStrictEqual({ message: "No credentials provided" })
             }) 
         })
 })
